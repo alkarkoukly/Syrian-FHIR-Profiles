@@ -29,17 +29,25 @@ jobs:
 
       - name: Publish FHIR Resources to Simplifier
         run: |
-          # Get list of JSON resources (profiles, extensions, examples, CodeSystems, ValueSets)
+          # Upload JSON resources to Simplifier project
+          # Using the direct project file upload endpoint
+          PROJECT_ID="Syrian-Core-Profiles"
+          
           for file in fsh-generated/resources/*.json; do
             filename=$(basename "$file")
-            # Skip the ImplementationGuide JSON if you prefer
+            
+            # Skip ImplementationGuide
             if [[ "$filename" != "ImplementationGuide-"* ]]; then
               echo "Uploading: $filename"
-              curl -X POST "https://simplifier.net/api/Project/Syrian-Core-Profiles/Res/CustomResource" \
+              
+              # Try uploading to Simplifier
+              curl -X POST "https://api.simplifier.net/Project/$PROJECT_ID/Upload" \
+                -H "Authorization: Basic $(echo -n "${{ secrets.SIMPLIFIER_USERNAME }}:${{ secrets.SIMPLIFIER_PASSWORD }}" | base64)" \
                 -H "Content-Type: application/fhir+json" \
-                -u "${{ secrets.SIMPLIFIER_USERNAME }}:${{ secrets.SIMPLIFIER_PASSWORD }}" \
-                --data-binary "@$file" \
-                -v
+                -F "file=@$file" \
+                --max-time 30 \
+                -w "\nHTTP Status: %{http_code}\n" \
+                -v || echo "Upload failed for $filename"
             fi
           done
 
