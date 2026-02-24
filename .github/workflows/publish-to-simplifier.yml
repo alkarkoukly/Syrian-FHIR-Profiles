@@ -27,14 +27,20 @@ jobs:
       - name: Run SUSHI
         run: sushi .
 
-      - name: Publish to Simplifier
-        uses: HL7/fhir-shorthand@master
-        with:
-          SIMPLIFIER_USERNAME: ${{ secrets.SIMPLIFIER_USERNAME }}
-          SIMPLIFIER_PASSWORD: ${{ secrets.SIMPLIFIER_PASSWORD }}
-          SIMPLIFIER_PROJECT: Syrian-Core-Profiles
-          FSH_FOLDER: input/fsh
-          OUTPUT_FOLDER: fsh-generated/resources
+      - name: Publish FHIR Resources to Simplifier
+        run: |
+          # Get list of JSON resources (profiles, extensions, examples, CodeSystems, ValueSets)
+          for file in fsh-generated/resources/*.json; do
+            filename=$(basename "$file")
+            # Skip the ImplementationGuide JSON if you prefer
+            if [[ "$filename" != "ImplementationGuide-"* ]]; then
+              echo "Uploading: $filename"
+              curl -X POST "https://hl7.simplifier.net/api/Project/Syrian-Core-Profiles/ResourceUpload" \
+                -H "Content-Type: application/fhir+json" \
+                -u "${{ secrets.SIMPLIFIER_USERNAME }}:${{ secrets.SIMPLIFIER_PASSWORD }}" \
+                --data-binary "@$file"
+            fi
+          done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
