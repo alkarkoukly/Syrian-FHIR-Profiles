@@ -1,0 +1,72 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "syrian-humanname",
+  "url": "http://fhir.sy/StructureDefinition/syrian-humanname",
+  "version": "0.1.0",
+  "name": "SyrianHumanName",
+  "title": "Syrian Human Name",
+  "status": "draft",
+  "publisher": "Syrian Health Informatics Program",
+  "description": "Reusable HumanName profile for Syrian core resources.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "HumanName",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/HumanName",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "HumanName.extension:motherName",
+        "path": "HumanName.extension",
+        "sliceName": "motherName",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-mother-name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.extension:fatherName",
+        "path": "HumanName.extension",
+        "sliceName": "fatherName",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-father-name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family",
+        "path": "HumanName.family",
+        "min": 1
+      },
+      {
+        "id": "HumanName.given",
+        "path": "HumanName.given",
+        "min": 1
+      }
+    ]
+  }
+}

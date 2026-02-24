@@ -1,0 +1,51 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "syrian-identifier",
+  "url": "http://fhir.sy/StructureDefinition/syrian-identifier",
+  "version": "0.1.0",
+  "name": "SyrianIdentifier",
+  "title": "Syrian Identifier",
+  "status": "draft",
+  "publisher": "Syrian Health Informatics Program",
+  "description": "Reusable identifier profile for Syrian core resources.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Identifier",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Identifier",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Identifier.type",
+        "path": "Identifier.type",
+        "min": 1,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://fhir.sy/ValueSet/sy-identifier-type"
+        }
+      },
+      {
+        "id": "Identifier.system",
+        "path": "Identifier.system",
+        "min": 1
+      },
+      {
+        "id": "Identifier.value",
+        "path": "Identifier.value",
+        "min": 1
+      }
+    ]
+  }
+}

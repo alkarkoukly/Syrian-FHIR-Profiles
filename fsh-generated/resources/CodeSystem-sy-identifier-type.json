@@ -1,0 +1,39 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "SyrianIdentifierType",
+  "id": "sy-identifier-type",
+  "title": "Syrian Identifier Type",
+  "description": "Core Syrian identifier type codes extending common HL7 identifier patterns.",
+  "url": "http://fhir.sy/CodeSystem/sy-identifier-type",
+  "concept": [
+    {
+      "code": "NID",
+      "display": "National Identifier"
+    },
+    {
+      "code": "MRN",
+      "display": "Medical Record Number"
+    },
+    {
+      "code": "NATPASS",
+      "display": "National Passport Number"
+    }
+  ],
+  "version": "0.1.0",
+  "publisher": "Syrian Health Informatics Program",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "count": 3
+}

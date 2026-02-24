@@ -1,0 +1,91 @@
+{
+  "resourceType": "Patient",
+  "id": "SyrianPatientExample01",
+  "meta": {
+    "profile": [
+      "http://fhir.sy/StructureDefinition/syrian-patient"
+    ]
+  },
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "NID",
+            "system": "http://fhir.sy/CodeSystem/sy-identifier-type",
+            "display": "National Identifier"
+          }
+        ]
+      },
+      "system": "http://fhir.sy/identifier/syriannationalnumber",
+      "value": "12345678901"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Al-Hassan",
+      "given": [
+        "Ahmad"
+      ],
+      "extension": [
+        {
+          "url": "http://fhir.sy/StructureDefinition/syrian-mother-name",
+          "valueString": "Fatima"
+        },
+        {
+          "url": "http://fhir.sy/StructureDefinition/syrian-father-name",
+          "valueString": "Khaled"
+        }
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-04-14",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+963944123456",
+      "use": "mobile"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "extension": [
+        {
+          "url": "http://fhir.sy/StructureDefinition/syrian-governorate-text",
+          "valueString": "Damascus Governorate"
+        },
+        {
+          "url": "http://fhir.sy/StructureDefinition/syrian-street-text",
+          "valueString": "Baghdad Street"
+        },
+        {
+          "url": "http://fhir.sy/StructureDefinition/syrian-house-number-text",
+          "valueString": "12"
+        }
+      ],
+      "text": "Damascus Governorate, Baghdad Street, House 12",
+      "city": "Damascus",
+      "line": [
+        "Baghdad Street 12"
+      ],
+      "country": "SY"
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "ar-SY"
+          }
+        ],
+        "text": "Arabic (Syria)"
+      },
+      "preferred": true
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "outputFile": "CodeSystem-sy-identifier-type.json",
+    "fshName": "SyrianIdentifierType",
+    "fshType": "CodeSystem",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 7,
+    "endLine": 16
+  },
+  {
+    "outputFile": "Patient-SyrianPatientExample01.json",
+    "fshName": "SyrianPatientExample01",
+    "fshType": "Instance",
+    "fshFile": "SyrianPatient.fsh",
+    "startLine": 22,
+    "endLine": 65
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-address.json",
+    "fshName": "SyrianAddress",
+    "fshType": "Profile",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 78,
+    "endLine": 91
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-father-name.json",
+    "fshName": "SyrianFatherName",
+    "fshType": "Extension",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 103,
+    "endLine": 111
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-governorate-text.json",
+    "fshName": "SyrianGovernorateText",
+    "fshType": "Extension",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 48,
+    "endLine": 56
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-house-number-text.json",
+    "fshName": "SyrianHouseNumberText",
+    "fshType": "Extension",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 68,
+    "endLine": 76
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-humanname.json",
+    "fshName": "SyrianHumanName",
+    "fshType": "Profile",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 113,
+    "endLine": 123
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-identifier.json",
+    "fshName": "SyrianIdentifier",
+    "fshType": "Profile",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 28,
+    "endLine": 37
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-mother-name.json",
+    "fshName": "SyrianMotherName",
+    "fshType": "Extension",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 93,
+    "endLine": 101
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-national-number-identifier.json",
+    "fshName": "SyrianNationalNumberIdentifier",
+    "fshType": "Profile",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 39,
+    "endLine": 46
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-patient.json",
+    "fshName": "SyrianPatient",
+    "fshType": "Profile",
+    "fshFile": "SyrianPatient.fsh",
+    "startLine": 1,
+    "endLine": 20
+  },
+  {
+    "outputFile": "StructureDefinition-syrian-street-text.json",
+    "fshName": "SyrianStreetText",
+    "fshType": "Extension",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 58,
+    "endLine": 66
+  },
+  {
+    "outputFile": "ValueSet-sy-identifier-type.json",
+    "fshName": "SyrianIdentifierTypeVS",
+    "fshType": "ValueSet",
+    "fshFile": "SyrianBaseDataTypes.fsh",
+    "startLine": 18,
+    "endLine": 26
+  }
+]

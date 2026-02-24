@@ -1,0 +1,90 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "syrian-address",
+  "url": "http://fhir.sy/StructureDefinition/syrian-address",
+  "version": "0.1.0",
+  "name": "SyrianAddress",
+  "title": "Syrian Address",
+  "status": "draft",
+  "publisher": "Syrian Health Informatics Program",
+  "description": "Reusable Address profile for Syrian core resources.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Address",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Address",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Address.extension:governorateText",
+        "path": "Address.extension",
+        "sliceName": "governorateText",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-governorate-text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Address.extension:streetText",
+        "path": "Address.extension",
+        "sliceName": "streetText",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-street-text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Address.extension:houseNumberText",
+        "path": "Address.extension",
+        "sliceName": "houseNumberText",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-house-number-text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Address.line",
+        "path": "Address.line",
+        "max": "1"
+      },
+      {
+        "id": "Address.country",
+        "path": "Address.country",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/ValueSet/iso3166-1-2"
+        }
+      }
+    ]
+  }
+}

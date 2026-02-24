@@ -1,0 +1,13 @@
+[SyrianAddress]: StructureDefinition-syrian-address.html
+[SyrianFatherName]: StructureDefinition-syrian-father-name.html
+[SyrianGovernorateText]: StructureDefinition-syrian-governorate-text.html
+[SyrianHouseNumberText]: StructureDefinition-syrian-house-number-text.html
+[SyrianHumanName]: StructureDefinition-syrian-humanname.html
+[SyrianIdentifier]: StructureDefinition-syrian-identifier.html
+[SyrianIdentifierType]: CodeSystem-sy-identifier-type.html
+[SyrianIdentifierTypeVS]: ValueSet-sy-identifier-type.html
+[SyrianMotherName]: StructureDefinition-syrian-mother-name.html
+[SyrianNationalNumberIdentifier]: StructureDefinition-syrian-national-number-identifier.html
+[SyrianPatient]: StructureDefinition-syrian-patient.html
+[SyrianPatientExample01]: Patient-SyrianPatientExample01.html
+[SyrianStreetText]: StructureDefinition-syrian-street-text.html

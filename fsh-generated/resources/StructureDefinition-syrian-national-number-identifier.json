@@ -1,0 +1,50 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "syrian-national-number-identifier",
+  "url": "http://fhir.sy/StructureDefinition/syrian-national-number-identifier",
+  "version": "0.1.0",
+  "name": "SyrianNationalNumberIdentifier",
+  "title": "Syrian National Number Identifier",
+  "status": "draft",
+  "publisher": "Syrian Health Informatics Program",
+  "description": "Identifier profile for Syrian national number.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Identifier",
+  "baseDefinition": "http://fhir.sy/StructureDefinition/syrian-identifier",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Identifier.type",
+        "path": "Identifier.type",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "NID",
+              "system": "http://fhir.sy/CodeSystem/sy-identifier-type",
+              "display": "National Identifier"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Identifier.system",
+        "path": "Identifier.system",
+        "patternUri": "http://fhir.sy/identifier/syriannationalnumber"
+      }
+    ]
+  }
+}

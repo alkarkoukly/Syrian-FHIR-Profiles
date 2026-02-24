@@ -1,0 +1,84 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "syrian-patient",
+  "url": "http://fhir.sy/StructureDefinition/syrian-patient",
+  "version": "0.1.0",
+  "name": "SyrianPatient",
+  "title": "Syrian Patient",
+  "status": "draft",
+  "publisher": "Syrian Health Informatics Program",
+  "description": "Core patient profile for Syrian implementations.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Patient",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Patient.meta.profile",
+        "path": "Patient.meta.profile",
+        "min": 1
+      },
+      {
+        "id": "Patient.identifier",
+        "path": "Patient.identifier",
+        "min": 1,
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-national-number-identifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.name",
+        "path": "Patient.name",
+        "min": 1,
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-humanname"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.gender",
+        "path": "Patient.gender",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        }
+      },
+      {
+        "id": "Patient.address",
+        "path": "Patient.address",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://fhir.sy/StructureDefinition/syrian-address"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

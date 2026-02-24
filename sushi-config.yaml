@@ -1,0 +1,36 @@
+id: fhir.sy.core-profiles
+canonical: http://fhir.sy
+name: Syrian FHIR Core Profiles
+title: Syrian FHIR Core Profiles
+description: An initial proposed design for the Syrian FHIR Profiles.
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+copyrightYear: 2026
+releaseLabel: ci-build
+publisher:
+  name: Samer Alkarkoukly
+  url: http://alkarkoukly.com
+contact:
+  - name: Samer Alkarkoukly
+    telecom:
+      - system: email
+        value: samer@alkarkoukly.com
+license: CC-BY-4.0
+jurisdiction: urn:iso:std:iso:3166#SY "Syrian Arab Republic"
+dependencies:
+  hl7.fhir.r4.core: 4.0.1
+pages:
+  index.md:
+    title: Home
+  profiles.md:
+    title: Profiles
+  examples.md:
+    title: Examples
+menu:
+  Home: index.html
+  Artifacts: artifacts.html
+  Profiles: profiles.html
+  Examples: examples.html
+parameters:
+  show-inherited-invariants: false

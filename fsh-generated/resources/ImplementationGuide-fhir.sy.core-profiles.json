@@ -1,0 +1,199 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "fhir.sy.core-profiles",
+  "url": "http://fhir.sy/ImplementationGuide/fhir.sy.core-profiles",
+  "version": "0.1.0",
+  "name": "SyrianFHIRCoreProfiles",
+  "title": "Syrian FHIR Core Profiles",
+  "status": "draft",
+  "publisher": "Samer Alkarkoukly",
+  "contact": [
+    {
+      "name": "Samer Alkarkoukly",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://alkarkoukly.com"
+        }
+      ]
+    },
+    {
+      "name": "Samer Alkarkoukly",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "samer@alkarkoukly.com"
+        }
+      ]
+    }
+  ],
+  "description": "An initial proposed design for the Syrian FHIR Profiles.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "SY",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Syrian Arab Republic"
+        }
+      ]
+    }
+  ],
+  "packageId": "fhir.sy.core-profiles",
+  "license": "CC-BY-4.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "packageId": "hl7.fhir.r4.core",
+      "version": "4.0.1",
+      "uri": "http://hl7.org/fhir",
+      "id": "hl7_fhir_r4_core"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-address"
+        },
+        "name": "Syrian Address",
+        "description": "Reusable Address profile for Syrian core resources.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-father-name"
+        },
+        "name": "Syrian Father Name",
+        "description": "Father name as part of local naming conventions.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-governorate-text"
+        },
+        "name": "Syrian Governorate Text",
+        "description": "Governorate in free text form for Syrian addresses.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-house-number-text"
+        },
+        "name": "Syrian House Number Text",
+        "description": "House number in free text form for Syrian addresses.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-humanname"
+        },
+        "name": "Syrian Human Name",
+        "description": "Reusable HumanName profile for Syrian core resources.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-identifier"
+        },
+        "name": "Syrian Identifier",
+        "description": "Reusable identifier profile for Syrian core resources.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/sy-identifier-type"
+        },
+        "name": "Syrian Identifier Type",
+        "description": "Core Syrian identifier type codes extending common HL7 identifier patterns.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/sy-identifier-type"
+        },
+        "name": "Syrian Identifier Type ValueSet",
+        "description": "Identifier type value set for Syrian core profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-mother-name"
+        },
+        "name": "Syrian Mother Name",
+        "description": "Mother name as part of local naming conventions.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-national-number-identifier"
+        },
+        "name": "Syrian National Number Identifier",
+        "description": "Identifier profile for Syrian national number.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-patient"
+        },
+        "name": "Syrian Patient",
+        "description": "Core patient profile for Syrian implementations.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Patient/SyrianPatientExample01"
+        },
+        "name": "Syrian Patient Example 01",
+        "description": "Example patient with Syrian naming structure and national identifier.",
+        "exampleCanonical": "http://fhir.sy/StructureDefinition/syrian-patient"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/syrian-street-text"
+        },
+        "name": "Syrian Street Text",
+        "description": "Street name in free text form for Syrian addresses.",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "profiles.html",
+          "title": "Profiles",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "examples.html",
+          "title": "Examples",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2026"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      },
+      {
+        "code": "show-inherited-invariants",
+        "value": "false"
+      }
+    ]
+  }
+}

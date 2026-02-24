@@ -1,0 +1,14 @@
+Output File                                                 Name                            Type        FSH File                 Lines
+CodeSystem-sy-identifier-type.json                          SyrianIdentifierType            CodeSystem  SyrianBaseDataTypes.fsh  7 - 16
+Patient-SyrianPatientExample01.json                         SyrianPatientExample01          Instance    SyrianPatient.fsh        22 - 65
+StructureDefinition-syrian-address.json                     SyrianAddress                   Profile     SyrianBaseDataTypes.fsh  78 - 91
+StructureDefinition-syrian-father-name.json                 SyrianFatherName                Extension   SyrianBaseDataTypes.fsh  103 - 111
+StructureDefinition-syrian-governorate-text.json            SyrianGovernorateText           Extension   SyrianBaseDataTypes.fsh  48 - 56
+StructureDefinition-syrian-house-number-text.json           SyrianHouseNumberText           Extension   SyrianBaseDataTypes.fsh  68 - 76
+StructureDefinition-syrian-humanname.json                   SyrianHumanName                 Profile     SyrianBaseDataTypes.fsh  113 - 123
+StructureDefinition-syrian-identifier.json                  SyrianIdentifier                Profile     SyrianBaseDataTypes.fsh  28 - 37
+StructureDefinition-syrian-mother-name.json                 SyrianMotherName                Extension   SyrianBaseDataTypes.fsh  93 - 101
+StructureDefinition-syrian-national-number-identifier.json  SyrianNationalNumberIdentifier  Profile     SyrianBaseDataTypes.fsh  39 - 46
+StructureDefinition-syrian-patient.json                     SyrianPatient                   Profile     SyrianPatient.fsh        1 - 20
+StructureDefinition-syrian-street-text.json                 SyrianStreetText                Extension   SyrianBaseDataTypes.fsh  58 - 66
+ValueSet-sy-identifier-type.json                            SyrianIdentifierTypeVS          ValueSet    SyrianBaseDataTypes.fsh  18 - 26
