@@ -29,9 +29,11 @@ jobs:
 
       - name: Publish FHIR Resources to Simplifier
         run: |
-          # Upload JSON resources to Simplifier project
-          # Using the direct project file upload endpoint
           PROJECT_ID="Syrian-Core-Profiles"
+          USERNAME="${{ secrets.SIMPLIFIER_USERNAME }}"
+          PASSWORD="${{ secrets.SIMPLIFIER_PASSWORD }}"
+          
+          echo "Starting upload to Simplifier project: $PROJECT_ID"
           
           for file in fsh-generated/resources/*.json; do
             filename=$(basename "$file")
@@ -40,16 +42,24 @@ jobs:
             if [[ "$filename" != "ImplementationGuide-"* ]]; then
               echo "Uploading: $filename"
               
-              # Try uploading to Simplifier
-              curl -X POST "https://api.simplifier.net/Project/$PROJECT_ID/Upload" \
-                -H "Authorization: Basic $(echo -n "${{ secrets.SIMPLIFIER_USERNAME }}:${{ secrets.SIMPLIFIER_PASSWORD }}" | base64)" \
-                -H "Content-Type: application/fhir+json" \
-                -F "file=@$file" \
-                --max-time 30 \
-                -w "\nHTTP Status: %{http_code}\n" \
-                -v || echo "Upload failed for $filename"
+              # Upload using Simplifier's project endpoint
+              HTTP_CODE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
+                -X POST "https://simplifier.net/api/upload/file" \
+                -H "Accept: application/json" \
+                -u "$USERNAME:$PASSWORD" \
+                -F "project=$PROJECT_ID" \
+                -F "file=@$file")
+              
+              echo "HTTP Response: $HTTP_CODE"
+              cat /tmp/response.txt
+              
+              if [[ "$HTTP_CODE" -ne 200 && "$HTTP_CODE" -ne 201 ]]; then
+                echo "Warning: Upload may have failed for $filename (HTTP $HTTP_CODE)"
+              fi
             fi
           done
+          
+          echo "Upload batch complete"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
