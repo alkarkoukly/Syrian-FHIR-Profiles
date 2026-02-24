@@ -1,4 +1,4 @@
-name: Build FHIR Profiles
+name: Build and Publish to Simplifier
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
     paths:
       - 'input/fsh/**'
       - 'sushi-config.yaml'
-      - '.github/workflows/build.yml'
+      - '.github/workflows/publish-to-simplifier.yml'
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,8 +27,30 @@ jobs:
       - name: Run SUSHI
         run: sushi .
         
-      - name: Verify build
-        run: ls -lah fsh-generated/resources/ | grep -E "\.json$"
+      - name: Publish FHIR Resources to Simplifier
+        run: |
+          PROJECT="Syrian-Core-Profiles"
+          USERNAME="${{ secrets.SIMPLIFIER_USERNAME }}"
+          PASSWORD="${{ secrets.SIMPLIFIER_PASSWORD }}"
+          
+          echo "Publishing to Simplifier project: $PROJECT"
+          
+          for file in fsh-generated/resources/*.json; do
+            filename=$(basename "$file")
+            
+            # Skip ImplementationGuide
+            if [[ "$filename" != "ImplementationGuide-"* ]]; then
+              echo "Publishing: $filename"
+              
+              # Use PUT instead of POST to Simplifier's upload endpoint
+              curl -X PUT "https://simplifier.net/api/upload" \
+                -H "Content-Type: application/fhir+json" \
+                -H "Authorization: Basic $(echo -n "$USERNAME:$PASSWORD" | base64)" \
+                -d @"$file" \
+                --silent --show-error \
+                -w "HTTP Status: %{http_code}\n"
+            fi
+          done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
