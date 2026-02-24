@@ -1,4 +1,4 @@
-name: Publish to Simplifier
+name: Build FHIR Profiles
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
     paths:
       - 'input/fsh/**'
       - 'sushi-config.yaml'
-      - '.github/workflows/publish-to-simplifier.yml'
+      - '.github/workflows/build.yml'
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,45 +26,13 @@ jobs:
 
       - name: Run SUSHI
         run: sushi .
-
-      - name: Publish FHIR Resources to Simplifier
-        run: |
-          PROJECT_ID="Syrian-Core-Profiles"
-          USERNAME="${{ secrets.SIMPLIFIER_USERNAME }}"
-          PASSWORD="${{ secrets.SIMPLIFIER_PASSWORD }}"
-          
-          echo "Starting upload to Simplifier project: $PROJECT_ID"
-          
-          for file in fsh-generated/resources/*.json; do
-            filename=$(basename "$file")
-            
-            # Skip ImplementationGuide
-            if [[ "$filename" != "ImplementationGuide-"* ]]; then
-              echo "Uploading: $filename"
-              
-              # Upload using Simplifier's project endpoint
-              HTTP_CODE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
-                -X POST "https://simplifier.net/api/upload/file" \
-                -H "Accept: application/json" \
-                -u "$USERNAME:$PASSWORD" \
-                -F "project=$PROJECT_ID" \
-                -F "file=@$file")
-              
-              echo "HTTP Response: $HTTP_CODE"
-              cat /tmp/response.txt
-              
-              if [[ "$HTTP_CODE" -ne 200 && "$HTTP_CODE" -ne 201 ]]; then
-                echo "Warning: Upload may have failed for $filename (HTTP $HTTP_CODE)"
-              fi
-            fi
-          done
-          
-          echo "Upload batch complete"
+        
+      - name: Verify build
+        run: ls -lah fsh-generated/resources/ | grep -E "\.json$"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: fhir-profiles
           path: fsh-generated/resources/
-          retention-days: 30
+          retention-days: 90

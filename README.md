@@ -30,12 +30,40 @@ See `ROADMAP.md` for the active checklist.
 1. Install SUSHI: `npm install -g fsh-sushi`
 2. Run in this folder: `sushi .`
 
-Generated output is created under `fsh-generated/`.
+Generated output is created under `fsh-generated/resources/`.
 
-## IG Publisher (minimal setup)
+## CI/CD - Automatic Building
 
-- `ig.ini` is included and points to `fsh-generated/resources/ImplementationGuide-sy.core.json`.
-- After running `sushi .`, use your local IG Publisher workflow to build the full rendered guide.
+GitHub Actions automatically builds this project on every push to `main`. The generated FHIR profiles are available as artifacts in the [Actions tab](https://github.com/alkarkoukly/Syrian-FHIR-Profiles/actions).
+
+## Publishing to Simplifier
+
+To publish profiles to https://fhir.simplifier.net/Syrian-Core-Profiles:
+
+1. **Generate profiles locally**:
+   ```bash
+   sushi .
+   ```
+
+2. **Upload to Simplifier** (manual):
+   - Log in to https://fhir.simplifier.net/Syrian-Core-Profiles
+   - Click **Upload** → select JSON files from `fsh-generated/resources/`
+   - Upload all `*.json` files except `ImplementationGuide-*.json`
+
+3. **Alternative**: Use Simplifier's API
+   ```bash
+   for file in fsh-generated/resources/*.json; do
+     [[ "$file" != *"ImplementationGuide"* ]] && \
+     curl -u your-username:your-password \
+       -F "file=@$file" \
+       "https://simplifier.net/api/upload/file?project=Syrian-Core-Profiles"
+   done
+   ```
+
+## IG Publisher (optional local rendering)
+
+- `ig.ini` is included and points to `fsh-generated/resources/ImplementationGuide-fhir.sy.core-profiles.json`.
+- After running `sushi .`, use the [IG Publisher](https://github.com/HL7/fhir-ig-publisher) to build the full rendered guide locally.
 
 ## Proposed Work Status
 
