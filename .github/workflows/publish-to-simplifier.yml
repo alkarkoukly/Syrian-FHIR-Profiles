@@ -1,0 +1,45 @@
+name: Publish to Simplifier
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'input/fsh/**'
+      - 'sushi-config.yaml'
+      - '.github/workflows/publish-to-simplifier.yml'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Run SUSHI
+        run: sushi .
+
+      - name: Publish to Simplifier
+        uses: HL7/fhir-shorthand@master
+        with:
+          SIMPLIFIER_USERNAME: ${{ secrets.SIMPLIFIER_USERNAME }}
+          SIMPLIFIER_PASSWORD: ${{ secrets.SIMPLIFIER_PASSWORD }}
+          SIMPLIFIER_PROJECT: Syrian-Core-Profiles
+          FSH_FOLDER: input/fsh
+          OUTPUT_FOLDER: fsh-generated/resources
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fhir-profiles
+          path: fsh-generated/resources/
+          retention-days: 30
