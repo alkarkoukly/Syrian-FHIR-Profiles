@@ -35,10 +35,11 @@ jobs:
             # Skip the ImplementationGuide JSON if you prefer
             if [[ "$filename" != "ImplementationGuide-"* ]]; then
               echo "Uploading: $filename"
-              curl -X POST "https://hl7.simplifier.net/api/Project/Syrian-Core-Profiles/ResourceUpload" \
+              curl -X POST "https://simplifier.net/api/Project/Syrian-Core-Profiles/Res/CustomResource" \
                 -H "Content-Type: application/fhir+json" \
                 -u "${{ secrets.SIMPLIFIER_USERNAME }}:${{ secrets.SIMPLIFIER_PASSWORD }}" \
-                --data-binary "@$file"
+                --data-binary "@$file" \
+                -v
             fi
           done
 
